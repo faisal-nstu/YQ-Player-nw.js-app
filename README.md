@@ -1,2 +1,3 @@
 # YQ-Player-nw.js-app-
-A player for youtube videos using nw.js (node web-kit)
+A player for youtube videos using nw.js (node web-kit). Surely you wont like it, but it is of great use to me so :p ... You can paste or drop YouTube video url in the text box and click the '+' button to start a video to play. Adding further url will add them to the playlist. Click on the playlist item to play particular item. Click on the '☼' button to hide the video. 
+... Enjoy :)
