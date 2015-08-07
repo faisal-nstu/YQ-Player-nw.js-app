@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <div id="controls">
+      <div id="player_cont">
+        <div id="player"></div>
+        <div id="hider_div" style="display: none;">
+          ♫
+        </div>
+      </div>
+      <form id="frm1" action="form_action.asp">
+        <input class="txtbx" type="text" name="fname" value="">
+        <button class="playerButton" type="button" onclick="addClick()">+</button>
+        <button class="playerButton" type="button" onclick="playPrev()">◄</button>
+        <button class="playerButton" type="button" onclick="playNext()">►</button>
+        <button class="playerButton" type="button" onclick="hideVideo()">☼</button>
+      </form>
+    </div>
+    <div id="playlist_cont">
+      <ul id="playList"></ul>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

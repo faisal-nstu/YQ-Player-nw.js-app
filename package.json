@@ -1,0 +1,22 @@
+{
+  "name": "ytqp-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ytqp.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "window": {
+    "title": "YTQP",
+    "toolbar": false,
+    "frame"  : false,
+    "width": 737,
+    "height": 427,
+    "icon": "yq.png"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "pretty-bytes": "^1.0.2"
+  }
+}

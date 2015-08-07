@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+/*Title Bar*/
+header{
+    width:         100%;
+    height:         34px;
+    background:    -webkit-linear-gradient(top, rgb(225,225,225) 0, rgb(200,200,200) 100%);
+    border-bottom: 1px solid rgb(205,205,205);
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    }
+
+/*Window Controls*/
+header>ul{
+    float:        left;
+    text-align:   left;
+    line-height:  0;
+    padding-left: 6px;
+    }
+header>ul>li,
+header>ul>li>a{
+    display: inline-block;
+    }
+header>ul{
+    float: right;
+    }
+header>ul>li>a{
+    width:              22px;
+    height:             22px;
+    margin:              6px 6px 6px 0;
+    background-image:   url('./icons.svg');
+    background-repeat:  no-repeat;
+    -webkit-transition: -webkit-transform 200ms;
+    -webkit-app-region: no-drag;
+    }
+header>ul>li>a:hover,
+header>ul>li>a:focus{
+    -webkit-transform:  scale(1.22,1.22);
+    outline:            none;
+    }
+a#windowControlClose{
+    background-position: -44px 0;
+    }
+a#windowControlMaximize{
+    background-position: -22px 0;
+    }
+a#windowControlMinimize{
+    background-position: 0 0;
+    }
+
+/* YTQP specific css */
+#yframe{
+    width: 100%;
+    height: 380px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    margin-top: 40px;
+}
+body{
+    background-color: #404040;
+}
+
+header>img{
+    float: left;
+    width: 28px;
+    height: 28px;
+    margin: 3px;
+    }
