@@ -10,7 +10,6 @@
     </style>
 
     <script>
-
         var nw = require('nw.gui');
         var win = nw.Window.get();
         win.isMaximized = false;
@@ -23,11 +22,22 @@
         <img src="yq.png">
         <ul>
             <li><a href='#' title='Minimize' id='windowControlMinimize'></a></li>
-            <li><a href='#' title='Maximize' id='windowControlMaximize'></a></li>
+            <!-- <li><a href='#' title='Maximize' id='windowControlMaximize'></a></li> -->
             <li><a href='#' title='Close'    id='windowControlClose'   ></a></li>
         </ul>
     </header>
     <script>
+        function receiveMessage(event)
+        {
+          if (event.data == 'hide-playlist') {
+            win.resizeTo(526,427);
+          };
+          if (event.data == 'show-playlist') {
+            win.resizeTo(755,427);
+          };
+        }
+
+        addEventListener("message", receiveMessage, false);
 
         // Min
         document.getElementById('windowControlMinimize').onclick = function()
@@ -41,25 +51,26 @@
             win.close();
         };
 
+
         // Max
-        document.getElementById('windowControlMaximize').onclick = function()
-        {
-            if (win.isMaximized)
-                win.unmaximize();
-            else
-                win.maximize();
-        };
+        // document.getElementById('windowControlMaximize').onclick = function()
+        // {
+        //     if (win.isMaximized)
+        //         win.unmaximize();
+        //     else
+        //         win.maximize();
+        // };
 
-        win.on('maximize', function(){
-            win.isMaximized = true;
-        });
+        // win.on('maximize', function(){
+        //     win.isMaximized = true;
+        // });
 
-        win.on('unmaximize', function(){
-            win.isMaximized = false;
-        });
+        // win.on('unmaximize', function(){
+        //     win.isMaximized = false;
+        // });
 
 
     </script>
-    <iframe id="yframe" src="http://www.output.jsbin.com/mukoho"></iframe>
+    <iframe id="yframe" src="http://www.output.jsbin.com/qosoyi"></iframe>
 </body>
 </html>

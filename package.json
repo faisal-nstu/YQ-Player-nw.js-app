@@ -11,9 +11,12 @@
     "title": "YTQP",
     "toolbar": false,
     "frame"  : false,
-    "width": 737,
+    "width": 526,
     "height": 427,
-    "icon": "yq.png"
+    "icon": "yq.png",
+    "resizable": false,
+    "always-on-top" : false,
+    "fullscreen":false
   },
   "license": "ISC",
   "dependencies": {

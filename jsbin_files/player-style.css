@@ -1,3 +1,9 @@
+/* ===================== */
+/* reset start */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+/* reset end */
+/* ===================== */
+
 .playerButton {
   -moz-box-shadow: inset 0px 34px 0px -15px #b54b3a;
   -webkit-box-shadow: inset 0px 34px 0px -15px #b54b3a;
@@ -15,16 +21,13 @@
   text-decoration: none;
   text-shadow: 0px -1px 0px #7a2a1d;
 }
-
 .playerButton:hover {
   background-color: #b34332;
 }
-
 .playerButton:active {
   position: relative;
   top: 1px;
 }
-
 .txtbx {
   background-color: #ffffff;
   border: 1px solid #241d13;
@@ -36,23 +39,19 @@
   padding: 9px 23px;
   text-decoration: none;
 }
-
 #wrapper {
   height: 100%;
   width: 100%;
   max-width: 750px;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 5px;
+  margin-left: 5px;
 }
-
 #controls {
   height: 100%;
-  width: 70%;
+  width: 516px;
+  /* width: 70%;
   max-width: 640px;
-  max-height: 440px;
-}
-
-#controls {
+  max-height: 440px; */
   font-family: Georgia, Times, serif;
   font-size: 15px;
   float: left;
@@ -60,6 +59,7 @@
 
 #playlist_cont {
   height: 100%;
+  display: none;
 }
 #playlist_cont ul {
   list-style: none;
@@ -68,7 +68,6 @@
   overflow: hidden;
   overflow-y: scroll;
 }
-
 #playlist_cont ul li {
   display: block;
   text-decoration: none;
@@ -80,29 +79,25 @@
   border-bottom-color: #CCCCCC;
   padding-left: 10px;
   cursor: pointer;
-  margin-left: -35px;
+  margin-left: 5px;
 }
-
 #playlist_cont ul li:hover {
   color: #FFFFFF;
   background-color: #aaaaaa
 }
-
 #playlist_cont ul li strong {
   margin-right: 10px;
 }
-
 #player_cont {
   background-color: #313131;
   position: relative;
   margin-bottom: 3px;
 }
-
 #hider_div {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 516px;
   height: 100%;
   background-color: rgba(0, 0, 0, 1);
   color: white;
@@ -111,11 +106,9 @@
   line-height: 330px;
   font-size: 48px;
 }
-
 #hider_div:hover {
-  height: 280px;
+    height: 280px;
 }
-
 #player:hover + #hider_div {
-  height: 280px;
+    height: 280px;
 }
