@@ -6,7 +6,35 @@
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <style type="text/css">
-       
+    .navMenu a:hover { background-color: rgba(0, 0, 0,.05) }
+
+.navMenu input {
+    background: url(search_icon.jpg) 5px center no-repeat #FFF;
+    border: 1px solid #AAA;
+    color: #666;
+    float: left;
+    font-size: 11px;
+    opacity: 0.2;
+    outline: none;
+    padding: 2px 2px 2px 0px;
+    width: 20px;
+    /* CSS3 */
+    /*border-radius: 5px;*/
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.navMenu input:hover { opacity: 1 }
+
+.navMenu input:focus {
+    opacity: .8;
+    width: 180px;
+    padding: 2px 2px 2px 20px;
+}
+
+.navMenu input:focus ~ a { width: 95px }
     </style>
 
     <script>
@@ -17,7 +45,7 @@
     </script>
     
 </head>
-<body>
+<body   >
     <header>
         <img src="yq.png">
         <ul>
@@ -27,6 +55,16 @@
         </ul>
     </header>
     <script>
+
+        function openSearch(query){
+            //https://www.youtube.com/results?search_query=saturnus+all+alone
+            //alert(query);
+            var qString = query.replace(/ /g, "+");
+            var searchUrl = 'https://www.youtube.com/results?search_query=' + qString;
+            var gui = require('nw.gui');
+            gui.Window.open(searchUrl,{toolbar:false,frame:true,width:1020,x:10,y:10});
+        }
+
         function receiveMessage(event)
         {
           if (event.data == 'hide-playlist') {
@@ -70,7 +108,26 @@
         // });
 
 
+
+
+
+
     </script>
     <iframe id="yframe" src="http://www.output.jsbin.com/qosoyi"></iframe>
+
+    <div id="search-button" class="navMenu">
+        <input type="text" id="search-box"/>
+    </div>
+
+    <script type="text/javascript">
+    document.getElementById("search-box").addEventListener( "keydown", function( e ) {
+    var keyCode = e.keyCode || e.which;
+    if ( keyCode === 13 ) {
+        openSearch(this.value);
+        this.value = '';
+        this.blur();
+    }
+}, false);</script>
+
 </body>
 </html>

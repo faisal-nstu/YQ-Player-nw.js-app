@@ -33,8 +33,7 @@ header>ul>li>a{
     -webkit-transition: -webkit-transform 200ms;
     -webkit-app-region: no-drag;
     }
-header>ul>li>a:hover,
-header>ul>li>a:focus{
+header>ul>li>a:hover{
     -webkit-transform:  scale(1.22,1.22);
     outline:            none;
     }
@@ -67,3 +66,14 @@ header>img{
     height: 28px;
     margin: 3px;
     }
+
+#search-button{
+    width:20px;
+    height: 20px; 
+    position: absolute;  
+    font-size:12px;
+    line-height: 20px; 
+    text-align:center;
+     cursor:pointer; 
+    top: 404px; 
+}
