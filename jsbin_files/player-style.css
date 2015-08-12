@@ -112,3 +112,32 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 #player:hover + #hider_div {
     height: 280px;
 }
+#cross{
+  width: 16px;
+  height: 16px;
+  float: right;
+  border-radius: 8px;
+  background-color: #dbdbdb;
+  margin: 7px;
+  box-shadow: 0px 0px 1px #ffffff inset, 
+              0px -0px 1px #000000 inset, 
+              0px 0px 1px 0px #000000 inset;
+  line-height: 14px;
+  font-size: 16px;
+  text-align: center;
+}
+#cross:hover{
+  background-color: #515151;
+  color: #e5e5e5;
+}
+/* .ContextItem{
+  background-color:White;
+  color:Black;
+  font-weight:normal;
+}
+.ContextItem:hover{
+  background-color:#0066FF;
+  color:White;
+  font-weight:bold;
+}
+ */

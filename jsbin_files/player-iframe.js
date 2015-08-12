@@ -110,11 +110,11 @@ function youtube_parser(url) {
 
 function playNext() {
   player.stopVideo();
+  index++;
   if (index >= urlList.length) {
     index = 0;
   }
   PlayAnother(GetUrl(index));
-  index++;
 }
 
 function playPrev() {
@@ -126,8 +126,10 @@ function playPrev() {
   PlayAnother(GetUrl(index));
 }
 
-var addToPlayList = function addToList(id) {
+var addToPlayList = function(id) {
   var node = document.createElement("LI");
+  //var cross = document.createElement("DIV");
+  node.innerHTML = "<div id=\"cross\">x</div>";
   var track = document.createTextNode(id);
   node.appendChild(track);
   document.getElementById("playList").appendChild(node);
@@ -143,8 +145,22 @@ var pl = document.getElementById('playList');
 pl.onclick = function(clickedItem) {
   var target = getEventTarget(clickedItem);
   var vid = target.innerHTML;
-  PlayAnother(vid);
+  if(vid === 'x'){
+    removeTrack(target);
+  }
+  else{
+   PlayAnother(vid.replace('<div id=\"cross\">x</div>','')); 
+  }
 };
+
+ var removeTrack = function(elem){
+  var vidId = elem.nextSibling.textContent;
+  var vidIndex = urlList.indexOf(vidId);
+  urlList.splice(vidIndex, 1);
+  var playListView = document.getElementById("playList");
+  playListView.removeChild(playListView.childNodes[vidIndex]);
+};
+
 
 function getEventTarget(e) {
   e = e || window.event;
