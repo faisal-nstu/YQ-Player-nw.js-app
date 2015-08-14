@@ -6,7 +6,7 @@
   <title>JS Bin</title>
 </head>
 
-<body>
+<body oncontextmenu="return false">
 
   <div id="wrapper">
     <div id="controls">
@@ -27,6 +27,18 @@
     </div>
     <div id="playlist_cont">
       <ul id="playList"></ul>
+      
+<!-- context menu -->
+      <div style="display:none;"   id="contextMenu">
+    <table  >
+      <tr>
+        <td >
+          <div id="contextMenuItem" onclick="removeTrackFromPlaylist()">Remove</div>
+          </td>
+      </tr>
+    </table>
+  </div>
+<!-- context menu -->
     </div>
   </div>
 

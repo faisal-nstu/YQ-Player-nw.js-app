@@ -65,6 +65,18 @@ function onPlayerStateChange(event) {
 function PlayAnother(urll) {
   player.loadVideoById(urll, 0, "large");
   player.playVideo();
+  ChangeTrackStyle(urll);
+}
+
+function ChangeTrackStyle(trackId){
+  [].forEach.call(items, function(item) {
+    if(item.innerHTML === trackId){
+      item.id = "playlist-itemsSelected";
+    }else{
+      item.id = "playlist-items";
+    }
+  });
+  
 }
 
 function stopVideo() {
@@ -92,6 +104,7 @@ function addClick() {
     addToPlayList(vidId);
     if(tag === undefined){
       createPlayer();
+      ChangeTrackStyle(vidId);
     }
   }
   x.reset();
@@ -128,8 +141,8 @@ function playPrev() {
 
 var addToPlayList = function(id) {
   var node = document.createElement("LI");
-  //var cross = document.createElement("DIV");
-  node.innerHTML = "<div id=\"cross\">x</div>";
+//   node.innerHTML = "<div id=\"cross\">x</div>";
+  node.id = 'playlist-items';
   var track = document.createTextNode(id);
   node.appendChild(track);
   document.getElementById("playList").appendChild(node);
@@ -155,10 +168,7 @@ pl.onclick = function(clickedItem) {
 
  var removeTrack = function(elem){
   var vidId = elem.nextSibling.textContent;
-  var vidIndex = urlList.indexOf(vidId);
-  urlList.splice(vidIndex, 1);
-  var playListView = document.getElementById("playList");
-  playListView.removeChild(playListView.childNodes[vidIndex]);
+  
 };
 
 
@@ -222,9 +232,41 @@ function togglePlaylist(){
     parent.postMessage("show-playlist", "*");
   }
 }
+// TOGGLE PLAYLIST
+//==========================================================
 
+//=======================================================
+// CONTEXT MENU
+window.addEventListener("contextmenu", function(e) { 
+  
+  var menu = document.getElementById('contextMenu');
+  var posx = e.clientX + 'px';
+  var posy = e.clientY + 'px'; 
+  menu.style.left = posx;
+  menu.style.top = posy;
+  if(e.target.nodeName == 'LI') {
+    selectedTrack = e.target.innerHTML;
+    menu.style.display = 'block';
+  }
+  else {
+    menu.style.display = 'none';
+  }
+}, false);
+// ===================================================
+
+// ===============================================
+// REMOVE TRACK
+
+function removeTrackFromPlaylist(){
+  var vidIndex = urlList.indexOf(selectedTrack);
+  urlList.splice(vidIndex, 1);
+  var playListView = document.getElementById("playList");
+  playListView.removeChild(playListView.childNodes[vidIndex]);
+  document.getElementById('contextMenu').style.display = 'none';
+}
 
 // https://www.youtube.com/watch?v=bHQqvYy5KYo
-// https://www.youtube.com/watch?v=TugL2HTrUPw
-// https://www.youtube.com/watch?v=4osCnNbq8Hc
+// https://www.youtube.com/watch?v=BEUs4520Pj0
+// https://www.youtube.com/watch?v=sh0ROXHQ0B8
+// https://www.youtube.com/watch?v=JEnLbPiQ-WM
 // http://i.imgur.com/2E7zcyM.gif
