@@ -91,14 +91,16 @@ function addClick() {
   //var i;
   for (var i = 0; i < x.length; i++) {
     text += x.elements[i].value;
-  }
+  }  
+  addUrlToPlayList(text);
+  x.reset();
 
+}
+
+function addUrlToPlayList(text){
+  
   var vidId = youtube_parser(text);
-  //var res = text.split("?v=");
-  //var id = res[1].split("&");
-
-
-  //console.log(id[0]);
+  
   if (vidId !== undefined) {
     urlList.push(vidId);
     addToPlayList(vidId);
@@ -107,8 +109,6 @@ function addClick() {
       ChangeTrackStyle(vidId);
     }
   }
-  x.reset();
-
 }
 
 function youtube_parser(url) {
@@ -204,7 +204,9 @@ function dragenter(e) {
 function dragstart(e) {
     source = e.target;
     e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('Text/html', ev.target.id);
   }
+
   // drag N drop
   //=============================================
 
@@ -252,6 +254,13 @@ window.addEventListener("contextmenu", function(e) {
     menu.style.display = 'none';
   }
 }, false);
+
+window.addEventListener("click", function(e) { 
+  if(e.target.id !== 'contextMenuItem'){
+    document.getElementById('contextMenu').style.display = 'none';
+  }
+}, false);
+
 // ===================================================
 
 // ===============================================
@@ -264,6 +273,32 @@ function removeTrackFromPlaylist(){
   playListView.removeChild(playListView.childNodes[vidIndex]);
   document.getElementById('contextMenu').style.display = 'none';
 }
+
+// ==============================================
+// DROP LINK
+function checkIfInPlaylist(value) {
+//   alert('url: >>>>>>>>>>>>' + value);
+  return urlList.indexOf(value) > -1;
+}
+
+function allowDrop(ev) {
+        ev.preventDefault();
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+          
+          var iid  = ev.target.innerHTML;
+//           alert('url: '+data+'item: '+iid);
+          if(data === ''){
+//             alert('nope : ' + data);
+          }
+          else{
+           addUrlToPlayList(data); 
+          }
+        }
+
 
 // https://www.youtube.com/watch?v=bHQqvYy5KYo
 // https://www.youtube.com/watch?v=BEUs4520Pj0
