@@ -28,7 +28,27 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
   position: relative;
   top: 1px;
 }
-.txtbx {
+#txtbx {
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+  background-color: #ffffff;
+  border: 0px solid #241d13;
+  display: inline-block;
+  color: #000000;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 0px;
+  text-decoration: none;
+  width: 0px;
+}
+#txtbxOpen{
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
   background-color: #ffffff;
   border: 1px solid #241d13;
   display: inline-block;
@@ -38,7 +58,11 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
   font-weight: bold;
   padding: 9px 23px;
   text-decoration: none;
+  text-align: left;
+  width: 190px;
 }
+
+
 #wrapper {
   height: 100%;
   width: 100%;

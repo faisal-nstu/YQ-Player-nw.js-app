@@ -83,18 +83,27 @@ function stopVideo() {
   player.stopVideo();
 }
 
+isTxtbxOpen = false;
 // get url from form
 function addClick() {
-  var x = document.getElementById("frm1");
-
-  var text = "";
-  //var i;
-  for (var i = 0; i < x.length; i++) {
+  if(!isTxtbxOpen){
+    isTxtbxOpen = true;
+    document.getElementById("txtbx").id = "txtbxOpen";
+    document.getElementById("txtbxOpen").focus();
+  }else{
+    
+    isTxtbxOpen = false;
+    var x = document.getElementById("frm1");
+    var text = "";
+    for (var i = 0; i < x.length; i++) {
     text += x.elements[i].value;
   }  
-  addUrlToPlayList(text);
+  if(text.length !== 0){
+    addUrlToPlayList(text);
   x.reset();
-
+  }
+  document.getElementById("txtbxOpen").id = "txtbx";
+  }
 }
 
 function addUrlToPlayList(text){
@@ -158,12 +167,10 @@ var pl = document.getElementById('playList');
 pl.onclick = function(clickedItem) {
   var target = getEventTarget(clickedItem);
   var vid = target.innerHTML;
-  if(vid === 'x'){
-    removeTrack(target);
-  }
-  else{
-   PlayAnother(vid.replace('<div id=\"cross\">x</div>','')); 
-  }
+  if(checkIfInPlaylist(vid)){
+    //removeTrack(target);
+    PlayAnother(vid);
+  } 
 };
 
  var removeTrack = function(elem){
@@ -298,7 +305,14 @@ function allowDrop(ev) {
            addUrlToPlayList(data); 
           }
         }
-
+// ========================================
+// TEXT BOX CLEAR ON BLUR
+// document.getElementById("add-button").addEventListener("focus", function(evn){
+// evn.target.value = '';
+// });
+// document.getElementById("txtbx").addEventListener("blur", function(evn){
+// evn.target.value = '+';
+// });
 
 // https://www.youtube.com/watch?v=bHQqvYy5KYo
 // https://www.youtube.com/watch?v=BEUs4520Pj0

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -20,8 +20,8 @@
         </div>
       </div>
       <form id="frm1" action="form_action.asp">
-        <input class="txtbx" type="text" name="fname" value="">
-        <button class="playerButton" type="button" onclick="addClick()">+</button>
+        <input id="txtbx" class="txtbx" type="text" name="fname" value="" >
+        <button id="add-button" class="playerButton" type="button" onclick="addClick()">+</button>
         <button class="playerButton" type="button" onclick="playPrev()">◄</button>
         <button class="playerButton" type="button" onclick="playNext()">►</button>
         <button class="playerButton" type="button" onclick="hideVideo()">☼</button>
@@ -33,14 +33,14 @@
       
 <!-- context menu -->
       <div style="display:none;"   id="contextMenu">
-    <table  >
-      <tr>
-        <td >
-          <div id="contextMenuItem" onclick="removeTrackFromPlaylist()">Remove</div>
-          </td>
-      </tr>
-    </table>
-  </div>
+		<table  >
+			<tr>
+				<td >
+					<div id="contextMenuItem" onclick="removeTrackFromPlaylist()">Remove</div>
+					</td>
+			</tr>
+		</table>
+	</div>
 <!-- context menu -->
     </div>
   </div>
