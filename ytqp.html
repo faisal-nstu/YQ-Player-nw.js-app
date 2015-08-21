@@ -6,35 +6,7 @@
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <style type="text/css">
-    .navMenu a:hover { background-color: rgba(0, 0, 0,.05) }
-
-.navMenu input {
-    background: url(search_icon.jpg) 5px center no-repeat #FFF;
-    border: 1px solid #AAA;
-    color: #666;
-    float: left;
-    font-size: 11px;
-    opacity: 0.2;
-    outline: none;
-    padding: 2px 2px 2px 0px;
-    width: 20px;
-    /* CSS3 */
-    /*border-radius: 5px;*/
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-}
-
-.navMenu input:hover { opacity: 1 }
-
-.navMenu input:focus {
-    opacity: .8;
-    width: 180px;
-    padding: 2px 2px 2px 20px;
-}
-
-.navMenu input:focus ~ a { width: 95px }
+    
     </style>
 
     <script>
@@ -45,7 +17,7 @@
     </script>
     
 </head>
-<body   >
+<body >
     <header>
         <img src="yq.png">
         <ul>
@@ -55,7 +27,6 @@
         </ul>
     </header>
     <script>
-
         function openSearch(query){
             //https://www.youtube.com/results?search_query=saturnus+all+alone
             //alert(query);
@@ -113,21 +84,76 @@
 
 
     </script>
-    <iframe id="yframe" src="http://www.output.jsbin.com/qosoyi"></iframe>
+    <!-- <iframe id="yframe" src="http://www.output.jsbin.com/qosoyi"></iframe> -->
+    <iframe id="yframe" src="http://www.output.jsbin.com/mukoho"></iframe>
 
-    <div id="search-button" class="navMenu">
-        <input type="text" id="search-box"/>
+    <div id="search-handle" class="navMenu">
+        <img src="search_icon.svg" >
+    </div>
+    <div id="search-panel-open">
+        <input type="text" id="search-panel-input">
+        <div id="search-button" >
+            <img src="search_icon.svg" >
+        </div>
     </div>
 
+
     <script type="text/javascript">
-    document.getElementById("search-box").addEventListener( "keydown", function( e ) {
+isSearchPanelOpen = false;
+document.getElementById("search-handle").addEventListener( "click", function( e ) {
+   if (!isSearchPanelOpen) {
+    openSearchPanel();
+   }else{
+    closeSearchPanel();
+   }
+}, false);
+
+    document.getElementById("search-panel-input").addEventListener( "keydown", function( e ) {
     var keyCode = e.keyCode || e.which;
     if ( keyCode === 13 ) {
-        openSearch(this.value);
-        this.value = '';
-        this.blur();
+        if (this.value !== '') {
+            searchAndResetUrlBox(this);
+        };
     }
-}, false);</script>
+}, false);
+
+    document.getElementById("search-button").addEventListener( "click", function(  ) {
+        var inputBox = document.getElementById("search-panel-input");
+        if (inputBox.value !== '') {
+            searchAndResetUrlBox(inputBox);
+        };
+}, false);
+
+    function searchAndResetUrlBox(b){
+        openSearch(b.value);
+        b.value = '';
+        b.blur();
+        closeSearchPanel();
+    }
+
+    function openSearchPanel(){
+        document.getElementById("search-handle").style.top = "357px";
+        document.getElementById("search-panel-open").style.top = "377px";
+        document.getElementById("search-panel-open").style.height = "50px";
+        document.getElementById("search-panel-input").style.height = "30px";
+        
+        setTimeout(function() {
+        document.getElementById("search-panel-input").style.display = "block";
+        document.getElementById("search-button").style.display = "block";
+        document.getElementById("search-panel-input").focus();
+    }, 150);
+    isSearchPanelOpen = true;
+    }
+    function closeSearchPanel(){
+        document.getElementById("search-handle").style.top = "407px";
+        document.getElementById("search-panel-open").style.top = "427px";
+        document.getElementById("search-panel-open").style.height = "0px";
+        document.getElementById("search-panel-input").style.height = "0px";
+        document.getElementById("search-panel-input").style.display = "none";
+        document.getElementById("search-button").style.display = "none";
+    isSearchPanelOpen = false;
+    }
+    </script>
 
 </body>
 </html>
